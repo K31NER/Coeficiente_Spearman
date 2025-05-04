@@ -20,7 +20,13 @@ with c2:
     texto_y = st.text_area("Datos de Y", value="78, 85, 72, 88, 80")
 
 # Nueva opción: elegir modo de cálculo
-modo = st.radio("Modo de cálculo", ["🔁 Paso a paso", "⚡ Directo"])
+f1, f2 = st.columns(2)
+with f1:
+    st.subheader("Calcular")
+    modo = st.radio("Modo de cálculo", ["🔁 Paso a paso", "⚡ Directo"])
+with f2:
+    st.subheader("Documentos")
+    st.page_link("pages/teoria.py", label="Ir a la teoría", icon="📘")
 
 def convertir_a_lista(texto):
     try:
@@ -75,7 +81,7 @@ if st.button("🔍 Calcular coeficiente"):
         interpretacion = interpretar_spearman(rs)
         st.success(f"📌 Interpretación: **{interpretacion}**")
 
-        st.subheader("📊 Representación gráfica")
+        st.subheader("📊 :blue[Representación gráfica]")
         fig = px.scatter(df, x="rango_x", y="rango_y", text=df.index,
                          labels={"rango_x": "Rango X", "rango_y": "Rango Y"},
                          title="Relación entre Rangos de X y Y",

@@ -43,4 +43,6 @@ Donde:
 ---
 """)
 
-st.info("👈 Usa el menú de la izquierda para volver a la calculadora y ver el proceso paso a paso.")
+st.page_link("app.py", label="⬅️ Volver al inicio")
+
+
