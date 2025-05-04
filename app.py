@@ -9,6 +9,7 @@ st.set_page_config(
 )
 
 st.title("📈 Calculadora de Coeficiente de Spearman")
+st.page_link("pages/teoria.py", label="Ir a la teoría", icon="📘")
 
 st.markdown("Ingrese los datos separados por comas (ejemplo: `4, 6, 2, 8, 5`)")
 
@@ -19,14 +20,9 @@ with c1:
 with c2:
     texto_y = st.text_area("Datos de Y", value="78, 85, 72, 88, 80")
 
-# Nueva opción: elegir modo de cálculo
-f1, f2 = st.columns(2)
-with f1:
-    st.subheader("Calcular")
-    modo = st.radio("Modo de cálculo", ["🔁 Paso a paso", "⚡ Directo"])
-with f2:
-    st.subheader("Documentos")
-    st.page_link("pages/teoria.py", label="Ir a la teoría", icon="📘")
+# Elegir modo de cálculo
+modo = st.radio("Modo de cálculo", ["🔁 Paso a paso", "⚡ Directo"])
+
 
 def convertir_a_lista(texto):
     try:
