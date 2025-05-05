@@ -81,8 +81,16 @@ if st.button("🔍 Calcular coeficiente"):
         fig = px.scatter(df, x="rango_x", y="rango_y", text=df.index,
                          labels={"rango_x": "Rango X", "rango_y": "Rango Y"},
                          title="Relación entre Rangos de X y Y",
-                         trendline="ols")
+                         trendline="lowess")
         fig.update_traces(marker=dict(size=12, color="skyblue"), textposition="top center")
+        
+        # Linea de tendencia
+        for trace in fig.data:
+            if trace.mode == "lines":
+                trace.line.color = "crimson" 
+                trace.line.width = 2  
+                trace.name = "Tendencia LOWESS"  
+        
         st.plotly_chart(fig, use_container_width=True)
 
     except Exception as e:
