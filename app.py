@@ -97,7 +97,7 @@ if st.button("🔍 Calcular coeficiente"):
         st.subheader("📊 :blue[Representación gráfica de los puntos reales]")
         fig = px.scatter(df, x="X", y="Y", text=df.index,
                          labels={"X": "valor X", "Y": "valor Y"},
-                         title="Relación entre valores Ñde X y Y",
+                         title="Relación entre valores de X y Y",
                          trendline="lowess")
         fig.update_traces(marker=dict(size=12, color="skyblue"), textposition="top center")
         
