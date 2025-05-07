@@ -93,5 +93,22 @@ if st.button("🔍 Calcular coeficiente"):
         
         st.plotly_chart(fig, use_container_width=True)
 
+
+        st.subheader("📊 :blue[Representación gráfica de los puntos reales]")
+        fig = px.scatter(df, x="X", y="Y", text=df.index,
+                         labels={"X": "valor X", "Y": "valor Y"},
+                         title="Relación entre valores Ñde X y Y",
+                         trendline="lowess")
+        fig.update_traces(marker=dict(size=12, color="skyblue"), textposition="top center")
+        
+        # Linea de tendencia
+        for trace in fig.data:
+            if trace.mode == "lines":
+                trace.line.color = "crimson" 
+                trace.line.width = 2  
+                trace.name = "Tendencia LOWESS"  
+        
+        st.plotly_chart(fig, use_container_width=True)
+
     except Exception as e:
         st.error(f"Ocurrió un error al calcular el coeficiente: {e}")
